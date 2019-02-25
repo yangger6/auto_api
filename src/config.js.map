@@ -1,0 +1,1 @@
+{"version":3,"file":"config.js","sourceRoot":"","sources":["config.ts"],"names":[],"mappings":";;AAAa,QAAA,MAAM,GAAG;IAClB,KAAK,EAAE;QACH,IAAI,EAAE,WAAW;KACpB;CACJ,CAAA","sourcesContent":["export const config = {\n    mysql: {\n        host: '127.0.0.1'\n    }\n}\n"]}

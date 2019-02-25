@@ -1,0 +1,23 @@
+/**
+* title: <%=title%>
+* version: <%=version%>
+*/
+import BaseServicesProxy, { IMapKey } from '../BaseServicesProxy';
+interface I<%=name%> {
+    <% apiList.map(api => {%>
+        /**
+        * <%=api.desc%>
+        <% api.parameters.map(param => {%>* @param {<%=param.type%>} <%=param.name%>
+        <%})%>
+        * @returns {<%=api.responses[0].type%>}
+        */
+        <%=api.method%><%=api.name%>(<% api.parameters.map((param, index) => {%><%=param.name%>: <%=param.type%><%= index !== api.parameters.length ? ', ': '' %><%})%>): any
+    <% }) %>
+}
+const mapkey: IMapKey = {
+    host: '<%=host%>',
+    baseUrl: '<%=baseUrl%>',
+    <% apiList.map(api => {%><%=api.method%><%=api.name%>: {url: "<%=api.path%>", autoUpdate: <%=api.autoUpdate%>, consumes: <%=api.autoUpdate%>},
+    <% }) %>
+}
+export const <%=name%>Services = (new BaseServicesProxy(mapkey).initProxy()) as I<%=name%>
